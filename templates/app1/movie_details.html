@@ -1,0 +1,80 @@
+ {% extends "app1/head.html" %}
+{% block body_block %}
+<!DOCTYPE html>
+{%load staticfiles%}
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>{{ mov }}</title>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+.aa{
+    color:red;
+    align:center;
+}
+.di
+{
+
+ align-content: upper;
+ /* margin: 250px; */
+}
+.left
+{
+    text-align:left;
+}
+
+</style>
+    </head>
+    <body>
+       <h3>Hello, {{ us }}</h3>
+        <div class="di" align="center" >  
+                        {%csrf_token%}
+
+      
+            {%if similar_movies%}
+            
+            <div class="left"> <h2>Movies similar to "{{ mov }}"</h2>
+                <p> {%for i in similar_movies%}
+                  <a href="{% url 'movie_name' i %}" >  {{i}}</a>
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+{%endif%}
+            {%if recent %}
+            
+            <div class="left"> <h2> Your Recent Searched Movies</h2>
+                <p> {%for i in recent%}
+                  <a href="{% url 'movie_name' i %}" >  {{i}}</a>
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+ 
+            {%endif%}
+
+            {%if Popular %}
+            
+            <div class="left"> <h2>Popular Movies</h2>
+                <p> {%for i in Popular%}
+                  <a href="{% url 'movie_name' i %}" >  {{i}}</a>
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+ 
+            {%endif%}
+                  
+        </div>     
+    </body>
+</html>
+
+{% endblock %}
+

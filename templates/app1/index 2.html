@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>user ID</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+body  {
+  background-image: url("static/images/image.png");
+  /* background-repeat: no-repeat;
+  background-size: 100% 100%; */
+ 
+}
+.aa{
+    color:red;
+    align:center;
+}
+.di
+{
+ background-color: green;
+ align-content: upper;
+ /* margin: 250px; */
+}
+.left
+{
+    text-align:left;
+}
+
+.right{right-align:right}
+</style>
+    </head>
+    <body>
+       
+        <div class="di" align="center" >  
+            <form method=POST>
+            {%csrf_token%}
+                <label for="movieName"><b>Movie Name</b></label>
+                <input type="text" name="movie" placeholder="Enter name of your Movie" required><br>
+                <br>
+                <button type="submit" >Suggest Movies</a></button>
+                 
+            </form>
+            <h1>{{ movies }}</h1>
+        
+            {%if nomov%}
+            <h2> {{nomov}}</h2>
+
+            {%elif movies%}
+            
+            <div class="right"> <h2> SIMILAR MOVIES to "{{movName}}"</h2>
+                <p> {%for i in movies%}
+                    {{i}}
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+ 
+            {%endif%}
+            <div class="left">
+            <h2 > Recent Movie Searches </h2>
+                {%for i in recent %}
+                    {{i}}
+                    <br> 
+                {%endfor%}
+            </div>          
+        </div>     
+    </body>
+</html>
+
+

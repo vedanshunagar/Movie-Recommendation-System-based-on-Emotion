@@ -1,0 +1,8 @@
+<iframe src="frame.html" style="width: 450px;height: 350px;" id="video_frame"></iframe>
+<br/><button type="button" onclick="play_video()">Play</button>
+<script>
+function play_video()
+{
+    document.getElementById('video_frame').contentWindow.playVid();
+}
+</script>

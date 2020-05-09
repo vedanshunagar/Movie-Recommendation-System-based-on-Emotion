@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>user ID</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+body  {
+  background-image: url("static/images/top2.jpg");
+  background-repeat: no-repeat;
+ 
+  background-size: cover;
+}
+.aa{
+    color:red;
+    align:center;
+}
+.di
+{
+ background-color:rgba(169,169,169,0.6);
+ padding:50px;
+
+ align-content: center;
+ margin: 250px;
+}
+.footer {
+  background-color: rgba(47,79,79,0.6);
+  padding: 20px;
+  text-align: center;
+}
+</style>
+    </head>
+    <body>
+     {% if mov %}
+     <h2>{{ mov }}<h2>
+      {% endif %}
+        <div class="di" align="center" >  
+        <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+            <form action='/hiscom'>
+                {%csrf_token%}
+                <h1>LOGIN</h1>
+                <label for="email"><b>Email</b></label>
+                <input type="text" name="email" placeholder="Enter your Email" required><br>
+                <br>
+                <label for="psw"><b>Password</b></label>
+               
+                <input type="password" name="psw" placeholder="Enter your Password" required><br>
+                <br>
+                <button type="submit" >Login</a></button>
+                <p> don't have account?<a href="/signup">Register</a></p>
+                 
+            </form>
+        </div>
+
+        <h2>Sign up</h2>
+        <div class="footer">
+          
+</div>  
+    </body>
+</html>

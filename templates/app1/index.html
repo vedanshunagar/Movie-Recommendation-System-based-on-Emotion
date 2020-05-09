@@ -1,0 +1,79 @@
+{% extends "app1/head.html" %}
+{% block body_block %}
+<!DOCTYPE html>
+{%load staticfiles%}
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Movie Recommander System</title>
+        <meta charset="UTF-8">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+.aa{
+    color:red;
+    align:center;
+}
+.di
+{
+ align-content: upper;
+ /* margin: 250px; */
+}
+.left
+{
+    text-align:left;
+}
+
+
+</style>
+    </head>
+    <body>
+   
+        <div class="di" align="center" >  
+                        {%csrf_token%}
+
+      
+            {%if movies%}
+            
+            <div class="left"> <h2> Movies for you</h2>
+                <p> {%for i in movies%}
+                  <a href="{% url 'movie_name' i %}" >  {{i}}</a>
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+            {%endif%}
+            {%if ActionThriller %}
+            
+            <div class="left"> <h2> Top Action Movies</h2>
+                <p> {%for i in ActionThriller%}
+                  <a href="{% url 'movie_name' i %}" >  {{i}}</a>
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+ 
+            {%endif%}
+
+            {%if Popular %}
+            
+            <div class="left"> <h2>Popular Movies</h2>
+                <p> {%for i in Popular%}
+                  <a href="{% url 'movie_name' i %}" >  {{i}}</a>
+                    <br>
+                    {%endfor%}
+                </p>
+            </div>
+ 
+            {%endif%}
+                  
+        </div>     
+    </body>
+</html>
+{% endblock %}
+
